@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const template = handlebars.compile(fs.readFileSync('template.html', 'utf8'));
+const template = handlebars.compile(fs.readFileSync('app/template.html', 'utf8'));
 
 app.post('/webhook', (req, res) => {
   const data = req.body;
