@@ -13,7 +13,6 @@ app.get('/', (req, res) => {
   res.send('✅ API running!');
 });
 
-
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -22,15 +21,17 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const template = handlebars.compile(fs.readFileSync('app/template.html', 'utf8'));
+const template = handlebars.compile(
+  fs.readFileSync('app/template.html', 'utf8')
+);
 
 app.post('/webhook', (req, res) => {
   const data = req.body;
   const html = template(data);
 
   const mailOptions = {
-    from: 'zakmayfield.dev@gmail.com',
-    to: 'zakmayfield@gmail.com',
+    from: process.env.FROM,
+    to: process.env.TO,
     subject: `ZakMayfield.dev's first Newsletter`,
     html: html,
   };
