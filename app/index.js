@@ -3,9 +3,9 @@ const express = require('express');
 const handlebars = require('handlebars');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
 
 const app = express();
-const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
